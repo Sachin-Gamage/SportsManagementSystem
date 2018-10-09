@@ -1,0 +1,54 @@
+﻿@model SportsManagement.Models.competitor
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>competitor</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Competitor_ID)
+
+        @Html.HiddenFor(model => model.Competitor_Salutation)
+
+        @Html.HiddenFor(model => model.Competitor_Name)
+
+        @Html.HiddenFor(model => model.Competitor_DoB)
+
+        @Html.HiddenFor(model => model.Competitor_Email)
+
+        @Html.HiddenFor(model => model.Competitor_Description)
+
+        @Html.HiddenFor(model => model.Competitor_Country)
+
+        @Html.HiddenFor(model => model.Competitor_Gender)
+
+        @Html.HiddenFor(model => model.Competitor_ContactNo)
+
+        @Html.HiddenFor(model => model.Competitor_Website)
+
+        @Html.HiddenFor(model => model.Competitor_Photo)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
