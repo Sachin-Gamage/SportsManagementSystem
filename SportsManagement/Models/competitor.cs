@@ -30,7 +30,6 @@ namespace SportsManagement.Models
         public bool Competitor_Gender { get; set; }
         public int Competitor_ContactNo { get; set; }
         public string Competitor_Website { get; set; }
-        public byte[] Competitor_Photo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<game> games { get; set; }

@@ -28,7 +28,8 @@ namespace SportsManagement.Controllers
 				var user = userManager.GetUser(userLogin);
 				if (user != null)
 				{
-					FormsAuthentication.SetAuthCookie(user.userEmail, false); 
+					FormsAuthentication.SetAuthCookie(user.userEmail, false);
+					Session["UserType"] = "2";
 					return RedirectToAction("Index", "Home");
 				}
 				else
@@ -37,6 +38,13 @@ namespace SportsManagement.Controllers
 				}
 			}
 			return View();
+		}
+
+		[HttpGet]
+		public ActionResult Signout ()
+		{
+			FormsAuthentication.SignOut();
+			return RedirectToAction("Login", "Login");
 		}
     }
 }

@@ -11,6 +11,7 @@ namespace SportsManagement.Controllers
 		[Authorize]
 		public ActionResult Index()
 		{
+			ViewBag.Message = Session["UserType"];
 			return View();
 		}
 

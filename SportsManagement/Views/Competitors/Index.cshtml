@@ -11,15 +11,18 @@
 </p>
 <table class="table">
     <tr>
-        <th></th>
+        <th>@Html.DisplayNameFor(model => model.Competitor_Name)</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.Competitor_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Competitor_ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Competitor_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Competitor_ID })
         </td>
     </tr>
 }

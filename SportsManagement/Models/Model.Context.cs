@@ -25,13 +25,11 @@ namespace SportsManagement.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<competitor> competitors { get; set; }
         public virtual DbSet<eventcompetitorresult> eventcompetitorresults { get; set; }
         public virtual DbSet<@event> events { get; set; }
         public virtual DbSet<game> games { get; set; }
         public virtual DbSet<login> logins { get; set; }
         public virtual DbSet<posteventinfo> posteventinfoes { get; set; }
-
-		public System.Data.Entity.DbSet<SportsManagement.Models.ViewModel.UserLoginView> UserLoginViews { get; set; }
-	}
+        public virtual DbSet<competitor> competitors { get; set; }
+    }
 }

@@ -4,13 +4,22 @@
     ViewBag.Title = "Create";
 }
 
+@{
+    var genderList = new SelectList(
+        new List<SelectListItem>
+        {
+    new SelectListItem {Text = "Male", Value = "true"},
+    new SelectListItem {Text = "Female", Value = "false"},
+        }, "Value", "Text");
+}
+
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>competitor</h4>
         <hr />
@@ -75,7 +84,7 @@
             @Html.LabelFor(model => model.Competitor_Gender, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Competitor_Gender)
+                    @Html.DropDownListFor(model => model.Competitor_Gender, genderList , "Select Gender")
                     @Html.ValidationMessageFor(model => model.Competitor_Gender, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -94,14 +103,6 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Competitor_Website, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Competitor_Website, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Competitor_Photo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Competitor_Photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Competitor_Photo, "", new { @class = "text-danger" })
             </div>
         </div>
 

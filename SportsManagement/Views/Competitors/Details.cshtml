@@ -10,9 +10,80 @@
     <h4>competitor</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_Salutation, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_Salutation)
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_Name)
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_DoB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_DoB)
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_Email)
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_Description)
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_Country, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_Country)
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_Gender, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @if (Model.Competitor_Gender)
+                    {
+                        @Html.Raw("Male");
+                    }
+                    else
+                    {
+                        @Html.Raw("Female");
+                    }
+                </div>
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_ContactNo)
+            </div>
+        </dd>
+
+        <dd class="form-group">
+            @Html.LabelFor(model => model.Competitor_Website, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Competitor_Website)
+            </div>
+        </dd>
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Competitor_ID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

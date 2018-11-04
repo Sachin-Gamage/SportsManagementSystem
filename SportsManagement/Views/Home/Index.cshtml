@@ -1,9 +1,13 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div>
-    <p>Successfully Logged in @Context.User.Identity.Name</p>
-</div>
+
+@if (Request.IsAuthenticated)
+{
+    <div>
+        <p>Successfully Logged in @Context.User.Identity.Name</p>
+    </div>
+}
 
 <div class="jumbotron">
     <h1>ASP.NET</h1>

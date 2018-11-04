@@ -19,7 +19,6 @@
           <Property Name="Competitor_Gender" Type="bool" Nullable="false" />
           <Property Name="Competitor_ContactNo" Type="int" Nullable="false" />
           <Property Name="Competitor_Website" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Competitor_Photo" Type="blob" Nullable="false" />
         </EntityType>
         <EntityType Name="eventcompetitorresults">
           <Key>
@@ -134,34 +133,17 @@ FROM `participations` AS `participations`</DefiningQuery>
     <edmx:ConceptualModels>
       <Schema Namespace="SportsManagementDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="sportsmanagementEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="competitors" EntityType="SportsManagementDataModel.competitor" />
           <EntitySet Name="eventcompetitorresults" EntityType="SportsManagementDataModel.eventcompetitorresult" />
           <EntitySet Name="events" EntityType="SportsManagementDataModel.event" />
           <EntitySet Name="games" EntityType="SportsManagementDataModel.game" />
           <EntitySet Name="logins" EntityType="SportsManagementDataModel.login" />
           <EntitySet Name="posteventinfoes" EntityType="SportsManagementDataModel.posteventinfo" />
+          <EntitySet Name="competitors" EntityType="SportsManagementDataModel.competitor" />
           <AssociationSet Name="participations" Association="SportsManagementDataModel.participations">
             <End Role="competitor" EntitySet="competitors" />
             <End Role="game" EntitySet="games" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="competitor">
-          <Key>
-            <PropertyRef Name="Competitor_ID" />
-          </Key>
-          <Property Name="Competitor_ID" Type="Int32" Nullable="false" />
-          <Property Name="Competitor_Salutation" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
-          <Property Name="Competitor_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Competitor_DoB" Type="DateTime" Nullable="false" />
-          <Property Name="Competitor_Email" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Competitor_Description" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="Competitor_Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Competitor_Gender" Type="Boolean" Nullable="false" />
-          <Property Name="Competitor_ContactNo" Type="Int32" Nullable="false" />
-          <Property Name="Competitor_Website" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Competitor_Photo" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="games" Relationship="SportsManagementDataModel.participations" FromRole="competitor" ToRole="game" />
-        </EntityType>
         <EntityType Name="eventcompetitorresult">
           <Key>
             <PropertyRef Name="Event_ID" />
@@ -215,6 +197,22 @@ FROM `participations` AS `participations`</DefiningQuery>
           <Property Name="Event_PhotoTags" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Event_ID" Type="Int32" Nullable="false" />
         </EntityType>
+        <EntityType Name="competitor">
+          <Key>
+            <PropertyRef Name="Competitor_ID" />
+          </Key>
+          <Property Name="Competitor_ID" Type="Int32" Nullable="false" />
+          <Property Name="Competitor_Salutation" Type="String" Nullable="false" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Competitor_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Competitor_DoB" Type="DateTime" Nullable="false" />
+          <Property Name="Competitor_Email" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Competitor_Description" Type="String" Nullable="false" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Competitor_Country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Competitor_Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Competitor_ContactNo" Type="Int32" Nullable="false" />
+          <Property Name="Competitor_Website" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="games" Relationship="SportsManagementDataModel.participations" FromRole="competitor" ToRole="game" />
+        </EntityType>
         <Association Name="participations">
           <End Type="SportsManagementDataModel.competitor" Role="competitor" Multiplicity="*" />
           <End Type="SportsManagementDataModel.game" Role="game" Multiplicity="*" />
@@ -225,23 +223,6 @@ FROM `participations` AS `participations`</DefiningQuery>
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SportsManagementDataModelStoreContainer" CdmEntityContainer="sportsmanagementEntities">
-          <EntitySetMapping Name="competitors">
-            <EntityTypeMapping TypeName="SportsManagementDataModel.competitor">
-              <MappingFragment StoreEntitySet="competitors">
-                <ScalarProperty Name="Competitor_Photo" ColumnName="Competitor_Photo" />
-                <ScalarProperty Name="Competitor_Website" ColumnName="Competitor_Website" />
-                <ScalarProperty Name="Competitor_ContactNo" ColumnName="Competitor_ContactNo" />
-                <ScalarProperty Name="Competitor_Gender" ColumnName="Competitor_Gender" />
-                <ScalarProperty Name="Competitor_Country" ColumnName="Competitor_Country" />
-                <ScalarProperty Name="Competitor_Description" ColumnName="Competitor_Description" />
-                <ScalarProperty Name="Competitor_Email" ColumnName="Competitor_Email" />
-                <ScalarProperty Name="Competitor_DoB" ColumnName="Competitor_DoB" />
-                <ScalarProperty Name="Competitor_Name" ColumnName="Competitor_Name" />
-                <ScalarProperty Name="Competitor_Salutation" ColumnName="Competitor_Salutation" />
-                <ScalarProperty Name="Competitor_ID" ColumnName="Competitor_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="eventcompetitorresults">
             <EntityTypeMapping TypeName="SportsManagementDataModel.eventcompetitorresult">
               <MappingFragment StoreEntitySet="eventcompetitorresults">
@@ -296,6 +277,22 @@ FROM `participations` AS `participations`</DefiningQuery>
                 <ScalarProperty Name="Event_PhotoTags" ColumnName="Event_PhotoTags" />
                 <ScalarProperty Name="Event_Photo" ColumnName="Event_Photo" />
                 <ScalarProperty Name="Photo_ID" ColumnName="Photo_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="competitors">
+            <EntityTypeMapping TypeName="SportsManagementDataModel.competitor">
+              <MappingFragment StoreEntitySet="competitors">
+                <ScalarProperty Name="Competitor_Website" ColumnName="Competitor_Website" />
+                <ScalarProperty Name="Competitor_ContactNo" ColumnName="Competitor_ContactNo" />
+                <ScalarProperty Name="Competitor_Gender" ColumnName="Competitor_Gender" />
+                <ScalarProperty Name="Competitor_Country" ColumnName="Competitor_Country" />
+                <ScalarProperty Name="Competitor_Description" ColumnName="Competitor_Description" />
+                <ScalarProperty Name="Competitor_Email" ColumnName="Competitor_Email" />
+                <ScalarProperty Name="Competitor_DoB" ColumnName="Competitor_DoB" />
+                <ScalarProperty Name="Competitor_Name" ColumnName="Competitor_Name" />
+                <ScalarProperty Name="Competitor_Salutation" ColumnName="Competitor_Salutation" />
+                <ScalarProperty Name="Competitor_ID" ColumnName="Competitor_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

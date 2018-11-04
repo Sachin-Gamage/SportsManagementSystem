@@ -123,5 +123,11 @@ namespace SportsManagement.Controllers
             }
             base.Dispose(disposing);
         }
+
+		public enum Gender
+		{
+			Male = 1,
+			Female = 0
+		}
     }
 }
